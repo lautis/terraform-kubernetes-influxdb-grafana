@@ -1,0 +1,48 @@
+adminPassword: asjdasiofe98q
+adminUser: admin
+
+persistence:
+  enabled: true
+  storageClassName: do-block-storage
+  accessModes:
+    - ReadWriteOnce
+  size: 5Gi
+
+sidecar:
+  dashboards:
+    enabled: true
+    label: grafana_dashboard
+    folder: /tmp/dashboards
+    searchNamespace: ALL
+  datasources:
+    enabled: false
+    label: grafana_datasource
+
+datasources:
+  datasources.yaml:
+    apiVersion: 1
+    datasources:
+    - name: influx-ruuvi
+      database: ruuvi
+      type: influxdb
+      url: http://influxdb-influxdb.influxdb:8086
+      access: proxy
+      isDefault: true
+    - name: Prometheus
+      type: prometheus
+      url: http://prometheus-operator-prometheus.prometheus:9090/
+      access: proxy
+      isDefault: false
+
+ingress:
+  enabled: true
+  hosts:
+    - ${host}
+  tls:
+    - hosts:
+      - ${host}
+      secretName: production-tls
+  annotations:
+    kubernetes.io/tls-acme: "true"
+    kubernetes.io/ingress.class: nginx
+    certmanager.k8s.io/cluster-issuer: letsencrypt-production

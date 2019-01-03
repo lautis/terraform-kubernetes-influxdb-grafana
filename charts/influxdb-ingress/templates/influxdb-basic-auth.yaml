@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Secret
+type: Opaque
+data:
+  auth: {{ .Values.auth | b64enc | quote }}
+metadata:
+  name: influxdb-basic-auth

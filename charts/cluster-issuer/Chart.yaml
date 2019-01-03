@@ -1,0 +1,11 @@
+name: cluster-issuer
+description: ClusterIssuer for cert-manager
+version: 0.2.1
+kubeVersion: ">=1.10.0"
+keywords:
+  - cert-manager
+  - lets-encrypt
+home: https://github.com/lautis/terraform-kubernetes-influxdb-grafana
+maintainers:
+  - name: Ville Lautanala
+    email: lautis@gmail.com

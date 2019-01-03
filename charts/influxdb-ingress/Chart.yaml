@@ -1,0 +1,11 @@
+name: influxdb-ingress
+description: Ingress for InfluxDB
+version: 0.1.6
+kubeVersion: ">=1.10.0"
+keywords:
+  - influxdb
+  - ingress
+home: https://github.com/lautis/terraform-kubernetes-influxdb-grafana
+maintainers:
+  - name: Ville Lautanala
+    email: lautis@gmail.com
